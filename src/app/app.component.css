@@ -1,0 +1,27 @@
+.container{
+  width: 100%;
+  margin: 15px;
+}
+.Contenido--Formulario{
+  float: left;
+  width: 35%;
+}
+.Contenido--Informacion{
+  float: left;
+  width: 65%;
+}
+mat-form-field{padding: 5px;}
+
+button, mat-form-field{
+  margin: 5px ;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

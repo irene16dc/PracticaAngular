@@ -1,0 +1,66 @@
+<h1>Persona </h1>
+
+<div class="container">
+  <div class="Contenido--Formulario">
+    <form>
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre </mat-label>
+      <input type="text" matInput minlength="3" [(ngModel)]="SelectedPersona.nombre" [ngModelOptions]="{standalone: true}" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Apellido</mat-label>
+      <input type="text" matInput minlength="3"  [(ngModel)]="SelectedPersona.apellidos" [ngModelOptions]="{standalone: true}"/>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>edad</mat-label>
+      <input matInput min="0" max="125" [(ngModel)]="SelectedPersona.edad" [ngModelOptions]="{standalone: true}" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Dni</mat-label>
+      <input matInput   placeholder="NIF (8 números y 1 letra)" pattern="^[0-9]{8,8}[A-Za-z]$" [(ngModel)]="SelectedPersona.dni" [ngModelOptions]="{standalone: true}"/>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha de Cumpleaños</mat-label>
+      <input matInput [matDatepicker]="picker"  [(ngModel)]="SelectedPersona.cumpleanos" [ngModelOptions]="{standalone: true}"  date='dd/mm/aaaa'/>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Color Favorito</mat-label>
+      <input matInput minlength="3"  [(ngModel)]="SelectedPersona.colorFavorito" [ngModelOptions]="{standalone: true}"/>
+    </mat-form-field>
+
+    <label>
+      <br />
+      Sexo: <br>
+    </label>
+    <mat-radio-group  [(ngModel)]="SelectedPersona.sexo" [ngModelOptions]="{standalone: true}">
+      <mat-radio-button value="Hombre"> Hombre</mat-radio-button>
+      <mat-radio-button value="Mujer">Mujer</mat-radio-button>
+      <mat-radio-button value="Otro"> Otro</mat-radio-button>
+      <mat-radio-button value="No especificado">No especificado</mat-radio-button>
+    </mat-radio-group>
+
+    <button (click)="addEdit()" mat-raised-button color="primary"  >enviar</button>
+  </form>
+
+
+
+  </div>
+  <div class="Contenido--Informacion">
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let persona of personaArray;let i = index">
+       Nombre : {{persona.nombre}} , Apellido: {{persona.apellidos}}; edad : {{persona.edad}}, dni: {{persona.dni}}, color Favorito
+        : {{persona.cumpleanos}}, Sexo {{persona.sexo}}
+
+        <button mat-raised-button color="primary" (click)="Edit(persona)" >editar</button
+        ><button mat-raised-button color="warn" (click)=" delete(i)">
+          Borrar
+        </button></mat-list-item
+      >
+    </mat-list>
+
+  </div>
+</div>
